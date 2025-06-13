@@ -4,6 +4,7 @@ const logger = require('./logger');
 
 // package.json sets NODE_ENV in its scripts
 const isProduction = process.env.NODE_ENV === 'production';
+const SQUARE_ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN;
 
 // load configuration based on environment
 const { error, parsed } = config({
@@ -22,4 +23,5 @@ logger.debug('Parsed configuration:', parsed);
 module.exports = {
   ...parsed,
   isProduction,
+  SQUARE_ACCESS_TOKEN,
 };
