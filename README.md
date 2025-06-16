@@ -33,6 +33,28 @@ npm run dev
 
 Finally, open [http://localhost:3000](http://localhost:3000).
 
+### Testing a Charge to Get Picked Up by Benji
+
+Navigate through the UI or through the address bar to:
+
+http://localhost:3000/examples/card-charge
+
+Enter in test card credentials
+
+Number: 4111 1111 1111 1111
+Expiration: <any future date>
+CVV: 111
+ZIP: 11111
+
+Now just click "Pay 1 (of whatever currency, will be dollars)"
+
+In the Benji system, the paymentpartnerservice will get hit with the webbook saying that a new payment was created.
+Next, the orderservice will pick it up, if the payment is completed and has a customer ID.
+Once an order is created, rewardservice should pick it up and see if rewards need to be accrued.
+
+NOTE: For now, this only works if you have a customerID on the payment request, and that customer is already pre-loaded into the Benji system as a Merchant user and as a Partner user, with valid external IDs.
+
+
 ### Credentials
 
 Before you can take a payment, you'll need to configure your developer credentials which can be found in the [Developer Dashboard](https://developer.squareup.com/apps).
